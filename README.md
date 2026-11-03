@@ -11,7 +11,12 @@ Tool versions (Node, pnpm, gitleaks) are pinned in `mise.toml`.
 ```sh
 mise install    # Node, pnpm, gitleaks
 pnpm install    # also installs the pre-commit secret scan (husky)
-pnpm check      # lint, format, typecheck, module boundaries, tests
+pnpm check      # lint, format, typecheck, module boundaries, tests (needs Docker)
+
+cp .env.example .env               # then set POSTGRES_PASSWORD
+docker compose up -d db            # Postgres + pgvector
+docker compose run --rm migrate    # apply all module migrations
+pnpm db:generate                   # after changing a module's src/db/schema.ts
 ```
 
 ## Layout

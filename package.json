@@ -15,17 +15,23 @@
     "typecheck": "tsc",
     "test": "vitest run --passWithNoTests",
     "boundaries": "depcruise .",
-    "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm boundaries && pnpm test"
+    "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm boundaries && pnpm test",
+    "db:generate": "pnpm --filter './modules/*' exec drizzle-kit generate",
+    "db:migrate": "node scripts/migrate.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.6",
     "dependency-cruiser": "^18.7.1",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^10.14.0",
     "husky": "^9.1.7",
     "prettier": "^3.9.10",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.72.1",
     "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@prairiedog/db": "workspace:*"
   }
 }

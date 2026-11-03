@@ -2,3 +2,12 @@ packages:
   - apps/*
   - modules/*
   - packages/*
+
+# Dependency install scripts are blocked unless listed here (supply-chain safety).
+# None of these is needed: esbuild ships its binary as a package; ssh2/cpu-features
+# are optional native speedups for Testcontainers; protobufjs only runs a version check.
+allowBuilds:
+  cpu-features: false
+  esbuild: false
+  protobufjs: false
+  ssh2: false
