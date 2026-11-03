@@ -1,0 +1,4 @@
+[tools]
+gitleaks = "8"
+node = "26"
+pnpm = "12"

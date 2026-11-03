@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="t">
+  <title id="t">prairiedog jump-yip</title>
+  <!-- The "jump-yip": stretched up, paws thrown out, head back, yelling. For alerts and the 404 page -->
+  <circle cx="48" cy="48" r="46" fill="#F4E6CC"/>
+  <ellipse cx="48" cy="90" rx="34" ry="7" fill="#C9A06A"/>
+  <g fill="#7A4E26" stroke="#7A4E26" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M38 88 C32 80 32 62 37 50 C40 43 44 39 48 38 C52 39 56 43 59 50 C64 62 64 80 58 88 Z" stroke-width="1"/>
+    <path d="M40 47 L27 33 M56 47 L69 33" fill="none" stroke-width="6"/>
+    <circle cx="25.5" cy="31.5" r="3.6" stroke="none"/>
+    <circle cx="70.5" cy="31.5" r="3.6" stroke="none"/>
+    <path d="M38 40 C36 30 40 20 48 18 C56 20 60 30 58 40 C55 44 41 44 38 40 Z" stroke-width="1"/>
+    <circle cx="39" cy="22" r="2.6" stroke="none"/>
+    <circle cx="57" cy="22" r="2.6" stroke="none"/>
+  </g>
+  <ellipse cx="48" cy="33.5" rx="4.2" ry="5" fill="#3A220E"/>
+  <ellipse cx="48" cy="36" rx="2.6" ry="2" fill="#D9776B"/>
+  <path d="M41.5 25.5 q2 -1.8 4 0 M50.5 25.5 q2 -1.8 4 0" fill="none" stroke="#F4E6CC" stroke-width="1.6" stroke-linecap="round"/>
+  <g stroke="#7A4E26" stroke-width="2.5" stroke-linecap="round">
+    <path d="M30 14 L26 9 M48 8 L48 3 M66 14 L70 9"/>
+  </g>
+</svg>

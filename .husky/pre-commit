@@ -1,0 +1,2 @@
+# Block commits that contain secrets. mise provides the pinned gitleaks version.
+mise exec -- gitleaks git --pre-commit --staged --redact --verbose

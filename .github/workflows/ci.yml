@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    # GitHub-hosted on purpose: PR code never runs on the self-hosted runner.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # full history for the secret scan
+      - uses: jdx/mise-action@v5 # Node, pnpm, gitleaks from mise.toml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - name: Secret scan (whole history)
+        run: gitleaks git --redact --verbose
