@@ -16,17 +16,21 @@ pnpm check      # lint, format, typecheck, module boundaries, tests (needs Docke
 cp .env.example .env               # then set POSTGRES_PASSWORD
 docker compose up -d db            # Postgres + pgvector
 docker compose run --rm migrate    # apply all module migrations
+docker compose up -d worker        # background jobs (runs migrate first)
 pnpm db:generate                   # after changing a module's src/db/schema.ts
 ```
 
 ## Layout
 
-| Path                 | What                                                    |
-| -------------------- | ------------------------------------------------------- |
-| `modules/collector`  | source adapters, raw listings, dedupe, change detection |
-| `modules/evaluator`  | rule filters, embeddings, LLM fit check                 |
-| `modules/notifier`   | Telegram, security digests                              |
-| `modules/web`        | users, auth, ratings, applications, CVs, REST + MCP     |
-| `packages/contracts` | the only shared code: event and job payload types       |
+| Path                 | What                                                                   |
+| -------------------- | ---------------------------------------------------------------------- |
+| `modules/collector`  | source adapters, raw listings, dedupe, change detection                |
+| `modules/evaluator`  | rule filters, embeddings, LLM fit check                                |
+| `modules/notifier`   | Telegram, security digests                                             |
+| `modules/web`        | users, auth, ratings, applications, CVs, REST + MCP                    |
+| `apps/worker`        | worker process: starts the job queue and registers every module's jobs |
+| `packages/db`        | applies every module's migrations                                      |
+| `packages/queue`     | pg-boss setup: retries with backoff, dead-letter queues                |
+| `packages/contracts` | the only shared code: event and job payload types                      |
 
 Modules are future services. Each owns its own data and talks to the others only through the job queue and events; `pnpm boundaries` (dependency-cruiser, see `.dependency-cruiser.cjs`) fails the build if a module imports another one.

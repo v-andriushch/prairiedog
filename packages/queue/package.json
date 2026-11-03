@@ -1,0 +1,12 @@
+{
+  "name": "@prairiedog/queue",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "pg-boss": "^12.38.0"
+  },
+  "devDependencies": {
+    "@testcontainers/postgresql": "^12.2.1"
+  }
+}

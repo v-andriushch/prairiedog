@@ -29,5 +29,17 @@ services:
         condition: service_healthy
     restart: 'no'
 
+  worker:
+    build: .
+    command: [node, apps/worker/src/main.ts]
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://prairiedog:${POSTGRES_PASSWORD}@db:5432/prairiedog
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    stop_grace_period: 40s # > the worker's 30 s shutdown timeout
+
 volumes:
   db-data:

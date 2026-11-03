@@ -1,2 +1,2 @@
 // Collector: source adapters, schedule, raw listings, dedupe, change detection.
-export {};
+export { COLLECTOR_RUN, registerCollectorJobs } from './jobs.ts';

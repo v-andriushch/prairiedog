@@ -1,0 +1,10 @@
+{
+  "name": "@prairiedog/worker",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@prairiedog/collector": "workspace:*",
+    "@prairiedog/queue": "workspace:*",
+    "pino": "^10.4.0"
+  }
+}
